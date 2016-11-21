@@ -24,4 +24,10 @@ public class FileLibrary
 		
 		api.Zip(ZipFilePath, sourceFilePath , fileName);
 	}
+	
+	public void ExtractFileFromArchive(String zipFile, String outputFolder)
+	{
+		ApiZipArchive api = new ApiZipArchive();
+		api.Unzip(zipFile, outputFolder);
+	}
 }

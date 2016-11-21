@@ -55,7 +55,8 @@ public class ApiZipArchive
 	    	
 	    	ZipEntry ze = zis.getNextEntry();
 
-	    	while(ze!=null){
+	    	while(ze!=null)
+	    	{
 
 	    	   String fileName = ze.getName();
 	           File newFile = new File(outputFolder + File.separator + fileName);
@@ -69,8 +70,9 @@ public class ApiZipArchive
 	            FileOutputStream fos = new FileOutputStream(newFile);
 
 	            int len;
-	            while ((len = zis.read(buffer)) > 0) {
-	       		fos.write(buffer, 0, len);
+	            while ((len = zis.read(buffer)) > 0) 
+	            {
+	            	fos.write(buffer, 0, len);
 	            }
 
 	            fos.close();
