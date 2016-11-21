@@ -10,6 +10,7 @@ import java.util.zip.ZipOutputStream;
 
 public class ApiZipArchive 
 {
+	
 	public void Zip(String zipFilePath, String targetFilePath, String fileToZipName)
 	{
 		byte[] buffer = new byte[1024];
