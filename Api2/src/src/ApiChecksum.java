@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-public class SumKontrol {
+public class ApiChecksum {
 
 	public static String createSum(String input, String algorithm)
 			throws NoSuchAlgorithmException {
