@@ -11,5 +11,12 @@ import java.nio.charset.MalformedInputException;
 
 public class ApiHttp 
 {
+	String address;
+	
+	public ApiHttp(String address)
+	{
+		this.address = address;
+	}
+	
 	
 }
