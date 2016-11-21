@@ -16,4 +16,10 @@ public class SumKontrol {
 	         
 	        return sb.toString();
     }
+	
+	 public static boolean testChecksum(String file, String testChecksum) 
+	    {
+			return false;
+	        
+	    }
 }
