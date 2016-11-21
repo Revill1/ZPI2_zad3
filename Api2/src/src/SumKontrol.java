@@ -1,9 +1,19 @@
 package src;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 public class SumKontrol {
 
-	static String md5(String input) {
+	public static String createSum(String input, String algorithm) throws NoSuchAlgorithmException {
        
-        return null;
+		 MessageDigest mDigest = MessageDigest.getInstance(algorithm);
+	        byte[] result = mDigest.digest(input.getBytes());
+	        StringBuffer sb = new StringBuffer();
+	        for (int i = 0; i < result.length; i++) {
+	            sb.append(Integer.toString((result[i] & 0xff) + 0x100, 16).substring(1));
+	        }
+	         
+	        return sb.toString();
     }
 }
