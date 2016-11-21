@@ -12,7 +12,18 @@ public class ApiCyphering {
 	
 	public static byte[] encrypt(String strToEncrypt, byte[] key)
     {
-		
+		try
+        {
+            Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
+			final SecretKeySpec secretKey = new SecretKeySpec(key, "AES");
+            cipher.init(Cipher.ENCRYPT_MODE, secretKey);
+            final byte[] encryptedString = cipher.doFinal(strToEncrypt.getBytes());
+            return encryptedString;
+        }
+        catch (Exception e)
+        {
+           e.printStackTrace();
+        }
         return null;
     }
 
