@@ -18,5 +18,21 @@ public class ApiHttp
 		this.address = address;
 	}
 	
-	
+	public File DowloadFile(String destinationPath) throws IOException
+	{
+		int i;
+		
+		URL url = new URL(address); 
+		URLConnection con = url.openConnection();
+		File file = new File(destinationPath);
+		BufferedInputStream bis = new BufferedInputStream(con.getInputStream());
+		BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(file.getName()));
+		
+		while((i=bis.read())!=-1)
+		{
+			bos.write(i);
+		}
+		
+		return null;
+	}
 }
