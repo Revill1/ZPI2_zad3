@@ -29,7 +29,19 @@ public class ApiCyphering {
 
     public static String decrypt(byte[] byteToDecrypt, byte[] key)
     {
-      
+    	try
+        {
+            Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5PADDING");
+            final SecretKeySpec secretKey = new SecretKeySpec(key, "AES");
+            cipher.init(Cipher.DECRYPT_MODE, secretKey);
+            final String decryptedString = new String(cipher.doFinal(byteToDecrypt));
+            return decryptedString;
+        }
+        catch (Exception e)
+        {
+          e.printStackTrace();
+
+        }
         return null;
     }
 
