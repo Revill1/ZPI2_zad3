@@ -10,12 +10,12 @@ import javax.crypto.spec.SecretKeySpec;
 public class ApiCyphering {
 	
 	
-	public static byte[] encrypt(String strToEncrypt, byte[] key)
+	public static byte[] encrypt(String strToEncrypt, byte[] key, String algorythmType)
     {
 		try
         {
             Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
-			final SecretKeySpec secretKey = new SecretKeySpec(key, "AES");
+			final SecretKeySpec secretKey = new SecretKeySpec(key, algorythmType);
             cipher.init(Cipher.ENCRYPT_MODE, secretKey);
             final byte[] encryptedString = cipher.doFinal(strToEncrypt.getBytes());
             return encryptedString;
