@@ -29,6 +29,7 @@ public class testApiCyphering {
 	private byte[] rawKeys;
 	private String algorythmType;
 	private String compare;
+	private byte[] toDecrypt;
 	
 	@Before
 	public void init()
@@ -41,6 +42,7 @@ public class testApiCyphering {
 			encryptString = "string do szyfrowania";
 			algorythmType = "AES";
 			compare = "[B@15975490";
+			toDecrypt = ApiCyphering.encrypt(encryptString, rawKeys, algorythmType);
 		} catch (NoSuchAlgorithmException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -51,8 +53,14 @@ public class testApiCyphering {
 	@Test
 	public void encriptTest()
 	{
-		byte[] afterEncrypt = ApiCyphering.encrypt(encryptString, rawKeys, algorythmType);
-		System.out.println(afterEncrypt.toString());
-		assertEquals(compare, afterEncrypt.toString());
+		byte[] afterEncrypts = ApiCyphering.encrypt(encryptString, rawKeys, algorythmType);
+		assertEquals(compare, afterEncrypts.toString());
+	}
+	
+	@Test
+	public void dencriptTest()
+	{
+		String afterDecrypt = ApiCyphering.decrypt(toDecrypt, rawKeys, algorythmType);
+		assertEquals(encryptString, afterDecrypt);
 	}
 }
