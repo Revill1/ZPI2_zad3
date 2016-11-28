@@ -24,7 +24,7 @@ public class TestApiChecksum {
 	private String algorithm;
 	private String algorithmSHA;
 	private String compareSum;
-	private Object compareSumSHA;
+	private String compareSumSHA;
 	private String file;
 
 	@Before
@@ -81,6 +81,17 @@ public class TestApiChecksum {
 	{
 		try {
 			Assert.assertTrue(ApiChecksum.testChecksum(file, compareSum, algorithm));
+		} catch (NoSuchAlgorithmException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	public void testChecksumWithSHAAlghoritmTest()
+	{
+		try {
+			Assert.assertTrue(ApiChecksum.testChecksum(file, compareSumSHA, algorithmSHA));
 		} catch (NoSuchAlgorithmException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
