@@ -46,7 +46,33 @@ public class Application {
 			break;
 			case 2:
 			{
-
+				ApiZipArchive zipApi = new ApiZipArchive();
+				System.out.println("Wybierz czy chcesz wypakowaæ lub spakowaæ plik (s)pakowaæ/(w)ypakowaæ");
+				String choose = in.next();
+				
+				if(choose.toLowerCase().equals("s"))
+				{
+					System.out.println("Podaj sciezke do pliku:");
+					String zipFilePath  = in.next();
+					System.out.println("Podaj sciezke docelow¹ gdzie plik zostanie zapisany po spakowaniu:");
+					String targetFilePath  = in.next();
+					System.out.println("Podaj nazwe pliku:");
+					String fileToZipName  = in.next();
+					zipApi.Zip(zipFilePath, targetFilePath, fileToZipName);
+				}
+				else if(choose.toLowerCase().equals("w"))
+				{
+					System.out.println("Podaj sciezke pliku do rozpakowania:");
+					String zipFile  = in.next();
+					System.out.println("Podaj sciezke docelow¹ gdzie plik zostanie wypakowany:");
+					String outputFolder  = in.next();
+					zipApi.Unzip(zipFile, outputFolder);
+				}
+				else
+				{
+					break;
+				}
+				
 			}
 			break;
 			case 3:
