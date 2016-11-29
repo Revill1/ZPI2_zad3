@@ -1,6 +1,7 @@
 package src;
 
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 import java.util.Scanner;
 
 import src.ApiChecksum;
@@ -77,12 +78,59 @@ public class Application {
 			break;
 			case 3:
 			{
+				
 
 			}
 			break;
 			case 4:
 			{
-
+				System.out.println("Wybierz czy chcesz wykreowaæ sumê kontroln¹ czy przetestowaæ? g/t");
+				String choose = in.next();
+				
+				if(choose.toLowerCase().equals("g"))
+				{
+					System.out.println("Podaj treœæ z której zostanie wygenerowana suma kontrolna:");
+					String input  = in.next();
+					System.out.println("Wybierz algorytm: SHA/MD5");
+					String algorithm  = in.next();
+					String sum = "";
+					try {
+						sum = ApiChecksum.createSum(input, algorithm.toUpperCase());
+					} catch (NoSuchAlgorithmException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					System.out.println("wygenerowana suma: " + sum);
+				}
+				else if(choose.toLowerCase().equals("t"))
+				{
+					System.out.println("Podaj nazwe pliku do rozpakowania:");
+					String file  = in.next();
+					System.out.println("Podaj sumê kontroln¹ jaka ma zostaæ porównana:");
+					String testChecksum  = in.next();
+					System.out.println("Wybierz algorytm: SHA/MD5");
+					String algorithm  = in.next();
+					try {
+						boolean sum = ApiChecksum.testChecksum(file, testChecksum, algorithm);
+						if(sum)
+						{
+							System.out.println("suma kontrolna " + testChecksum + " jest zgodna");
+						}
+						else
+						{
+							System.out.println("suma kontrolna " + testChecksum + " nie jest zgodna");
+						}
+						
+					} catch (NoSuchAlgorithmException | IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+				else
+				{
+					break;
+				}
+				
 			}
 				break;
 			case 5:
