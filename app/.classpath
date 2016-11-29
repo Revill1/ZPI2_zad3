@@ -2,7 +2,7 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="D:/Adam/studia/VII semestr/programowanie pod kątem wielokrotnego użycia/ZPI2_zad3/ZPI2_zad3/libraries/LibraryCypheringAPI.jar"/>
-	<classpathentry kind="lib" path="D:/Adam/studia/VII semestr/programowanie pod kątem wielokrotnego użycia/ZPI2_zad3/ZPI2_zad3/libraries/LibraryHttpAPI.jar"/>
+	<classpathentry kind="lib" path="C:/Users/wojciech.pelka/Desktop/ZPI2_zad3/libraries/LibraryCypheringAPI.jar"/>
+	<classpathentry kind="lib" path="C:/Users/wojciech.pelka/Desktop/ZPI2_zad3/libraries/LibraryFileManagerAPI.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
