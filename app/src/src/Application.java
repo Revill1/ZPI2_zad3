@@ -10,6 +10,7 @@ import javax.crypto.SecretKey;
 import src.ApiChecksum;
 import src.ApiCyphering;
 import Http.ApiHttp;
+import Library.FileLibrary;
 import ZipArchive.*;
 
 public class Application {
@@ -20,6 +21,7 @@ public class Application {
 		Scanner in = new Scanner(System.in);
 		while (true) 
 		{
+			FileLibrary fileLibrary = new FileLibrary();
 			System.out.println("Witaj, wybierz jedna z opcji:");
 			System.out.println("1) Sciaganiae plikow z wykorzystaniem protokolu HTTP");
 			System.out.println("2) Kompresja i dekompresja plikow ZIP");
@@ -35,32 +37,27 @@ public class Application {
 			{
 				System.out.println("podaj adres url z któego chcesz pobraæ plik");
 				String url = in.next();
-				ApiHttp http = new ApiHttp(url);
 				System.out.println("podaj œcie¿kê zapisu pliku");
 				String path = in.next();
 				try {
-					http.DowloadFile(path);
+					fileLibrary.DownloadFileFromRoute(url, path);
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
 			break;
 			case 2:
 			{
-				ApiZipArchive zipApi = new ApiZipArchive();
 				System.out.println("Wybierz czy chcesz wypakowaæ lub spakowaæ plik (s)pakowaæ/(w)ypakowaæ");
 				String choose = in.next();
 				
 				if(choose.toLowerCase().equals("s"))
 				{
-					System.out.println("Podaj sciezke do pliku:");
+					System.out.println("Podaj sciezke do pliku zip:");
 					String zipFilePath  = in.next();
-					System.out.println("Podaj sciezke docelow¹ gdzie plik zostanie zapisany po spakowaniu:");
+					System.out.println("Podaj sciezke pliku do spakowania ");
 					String targetFilePath  = in.next();
-					System.out.println("Podaj nazwe pliku:");
-					String fileToZipName  = in.next();
-					zipApi.Zip(zipFilePath, targetFilePath, fileToZipName);
+					fileLibrary.AddFileToArchive(targetFilePath, zipFilePath);
 				}
 				else if(choose.toLowerCase().equals("w"))
 				{
@@ -68,7 +65,7 @@ public class Application {
 					String zipFile  = in.next();
 					System.out.println("Podaj sciezke docelow¹ gdzie plik zostanie wypakowany:");
 					String outputFolder  = in.next();
-					zipApi.Unzip(zipFile, outputFolder);
+					fileLibrary.ExtractFileFromArchive(zipFile, outputFolder);
 				}
 				else
 				{
